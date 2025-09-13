@@ -5,10 +5,10 @@ import os
 def create(data: str, save_dir: str = "static") -> str:
 
 
-    os.makedirs(save_dir, exist_ok=True)
+    os.makedirs("static/images", exist_ok=True)
     
     filename = f"qr_{uuid.uuid4().hex}.png"
-    path = os.path.join(save_dir, filename)
+    path = os.path.join("static/images", filename)
     
     qr = qrcode.make(data)
     qr.save(path)
