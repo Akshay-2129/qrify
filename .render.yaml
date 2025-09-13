@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: qrify
+    env: docker
+    plan: free
+    buildCommand: ""
+    startCommand: ""
