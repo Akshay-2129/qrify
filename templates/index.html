@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ QR Code Generator • SaaS Tool</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2921/2921822.png">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 50px 30px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    input[type="url"] {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    input[type="url"]:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #5a0fb5, #1f65db);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>🚀 Welcome to QRify</h1>
+    <p>Generate your stylish QR Codes instantly — simple, fast, and free! 📱💡</p>
+
+    <form action="/generate" method="POST">
+      <input type="url" name="link" placeholder="https://example.com" required>
+      <button type="submit">✨ Generate My QR Code</button>
+    </form>
+
+    <footer>
+      &copy; 2025 QRify • The Smart Way to Share Links ⚡
+    </footer>
+  </main>
+</body>
+
+</html>

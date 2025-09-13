@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🚀 Your QR Code Result</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background: #ffffff;
+      color: #333;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 15px;
+      background: #f9f9f9;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 14px 25px;
+      background: #667eea;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover {
+      background: #5a67d8;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>✅ Your QR Code is Ready!</h1>
+
+    <img src="{{ qr_path }}" alt="Generated QR Code">
+
+    <a href="/" class="button">🔄 Generate Another</a>
+
+    <footer>
+      &copy; 2025 QR Code Generator • Built with ❤️
+    </footer>
+  </main>
+</body>
+
+</html>
