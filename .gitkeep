@@ -1,0 +1,5 @@
+touch static/.gitkeep
+touch static/images/.gitkeep
+git add static/.gitkeep static/images/.gitkeep
+git commit -m "Add static folder for deployment"
+git push
