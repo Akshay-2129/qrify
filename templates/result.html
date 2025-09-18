@@ -6,16 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🚀 Your QR Code Result</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25231.png">
-
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -23,56 +17,96 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       color: #fff;
+      padding: 15px;
     }
 
     .container {
-      background: #ffffff;
+      background: #fff;
       color: #333;
-      padding: 40px;
+      padding: 30px 20px;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       width: 100%;
-      max-width: 450px;
+      max-width: 380px;
       text-align: center;
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 25px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: -webkit-linear-gradient(45deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     img {
-      max-width: 100%;
-      border: 1px solid #ddd;
+      max-width: 80%;
       border-radius: 12px;
       padding: 15px;
       background: #f9f9f9;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover { transform: scale(1.03); }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 15px;
     }
 
     a.button {
-      display: inline-block;
-      padding: 14px 25px;
-      background: #667eea;
-      color: white;
-      text-decoration: none;
+      padding: 12px 0;
+      font-weight: 600;
+      font-size: 0.95rem;
       border-radius: 12px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    a.button:hover {
-      background: #5a67d8;
+    a.download {
+      background: linear-gradient(135deg, #44c767, #5cbf2a);
+    }
+
+    a.download:hover {
+      background: linear-gradient(135deg, #3cb64a, #4ba222);
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    a.generate {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    a.generate:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b5cd1);
+      transform: translateY(-1px) scale(1.02);
     }
 
     footer {
-      margin-top: 30px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #aaa;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 400px) {
+      .container { padding: 25px 15px; }
+      h1 { font-size: 1.4rem; }
+      img { max-width: 90%; }
+      a.button { font-size: 0.9rem; padding: 10px 0; }
     }
   </style>
 </head>
@@ -81,9 +115,13 @@
   <main class="container">
     <h1>✅ Your QR Code is Ready!</h1>
 
-    <img src="{{ qr_path }}" alt="Generated QR Code">
+    <img id="qrImage" src="{{ qr_path }}" alt="Generated QR Code">
 
-    <a href="/" class="button">🔄 Generate Another</a>
+    <!-- Buttons -->
+    <div class="buttons">
+      <a href="{{ qr_path }}" download="my_qr_code.png" class="button download">⬇️ Download QR Code</a>
+      <a href="/" class="button generate">🔄 Generate Another</a>
+    </div>
 
     <footer>
       &copy; 2025 QR Code Generator • Built with ❤️
