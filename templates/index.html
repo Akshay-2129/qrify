@@ -16,17 +16,23 @@ input[type="url"]:focus{border-color:#2575fc;outline:none;box-shadow:0 0 8px rgb
 button{width:100%;padding:14px;font-size:1.1rem;font-weight:600;color:#fff;background:linear-gradient(135deg,#6a11cb,#2575fc);border:none;border-radius:10px;cursor:pointer;transition:0.3s;}
 button:hover{background:linear-gradient(135deg,#5a0fb5,#1f65db);transform:translateY(-2px);}
 footer{margin-top:25px;color:#aaa;font-size:0.9rem;}
+.ad-container{margin:20px 0;}
 </style>
 </head>
 <body>
 <main class="container">
 <h1>🚀 Welcome to QRify</h1>
 <p>Generate stylish QR Codes instantly — simple, fast, and free! 📱💡</p>
+
+<div class="ad-container">
+<p style="color:#777;font-size:0.9rem;">[Ad Placeholder]</p>
+</div>
+
 <form action="/generate" method="POST">
 <input type="url" name="link" placeholder="https://example.com" required>
 <button type="submit">✨ Generate QR Code</button>
 </form>
-<footer>&copy; 2025 QRify • Built with ❤️</footer>
+<footer>&copy; 2025 QRify • By Akshay</footer>
 </main>
 </body>
 </html>

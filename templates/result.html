@@ -27,17 +27,21 @@ a.generate:hover{background:linear-gradient(135deg,#5a67d8,#6b5cd1);transform:tr
 .history-item img{width:50px;height:50px;border-radius:6px;cursor:pointer;object-fit:cover;}
 .history-item button{padding:4px 8px;font-size:0.8rem;border:none;border-radius:6px;background:#667eea;color:white;cursor:pointer;}
 footer{font-size:0.8rem;color:#aaa;margin-top:20px;}
+.ad-container{margin:20px 0;}
 @media(max-width:400px){.container{padding:25px 15px;}h1{font-size:1.4rem;}img{max-width:90%;}a.button{font-size:0.9rem;padding:10px 0;}}
 </style>
 </head>
 <body>
 <main class="container">
 <h1>✅ Your QR Code is Ready!</h1>
-
 <img id="qrImage" src="{{ qr_path }}" alt="Generated QR Code">
 
+<div class="ad-container">
+<p style="color:#777;font-size:0.9rem;">[Ad Placeholder]</p>
+</div>
+
 <div class="buttons">
-<a href="{{ qr_path }}" download="my_qr_code.png" class="button download">⬇️ Download QR Code</a>
+<a href="/download?link={{ link }}" class="button download">⬇️ Download QR Code</a>
 <a href="/" class="button generate">🔄 Generate Another</a>
 </div>
 
@@ -51,59 +55,50 @@ footer{font-size:0.8rem;color:#aaa;margin-top:20px;}
 <div id="qrHistory"></div>
 </div>
 
-<footer>&copy; 2025 QR Code Generator • Built with ❤️</footer>
+<footer>&copy; 2025 QRify • Built with ❤️</footer>
 </main>
 
-<!-- Canvas Confetti Library -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
 <script>
-// Confetti celebration
 function celebrate() {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
+    confetti({particleCount: 100,spread: 70,origin: { y: 0.6 }});
 }
-celebrate(); // trigger on page load
+celebrate();
 
-// Copy QR link
 function copyLink(){
-  const copyText = document.getElementById("qrLink");
-  copyText.select();
-  copyText.setSelectionRange(0,99999);
-  navigator.clipboard.writeText(copyText.value).then(()=>{alert("QR link copied!");});
+    const copyText = document.getElementById("qrLink");
+    copyText.select();
+    copyText.setSelectionRange(0,99999);
+    navigator.clipboard.writeText(copyText.value).then(()=>{alert("QR link copied!");});
 }
 
-// Per-user QR history using localStorage
 const currentQR = {link: "{{ link }}", path: "{{ qr_path }}"};
 let history = JSON.parse(localStorage.getItem("qrify_history") || "[]");
-
-// Add current QR to history
 history.unshift(currentQR);
-history = history.slice(0,5); // keep only last 5 QRs
+history = history.slice(0,5);
 localStorage.setItem("qrify_history", JSON.stringify(history));
 
-// Display history
 const qrHistoryDiv = document.getElementById("qrHistory");
 qrHistoryDiv.innerHTML = "";
 history.forEach((item)=>{
-  const div = document.createElement("div");
-  div.classList.add("history-item");
-
-  const img = document.createElement("img");
-  img.src = item.path;
-  img.title = item.link;
-  img.onclick = ()=>{document.getElementById("qrImage").src = item.path; document.getElementById("qrLink").value = item.link; celebrate();};
-
-  const btn = document.createElement("button");
-  btn.textContent = "Copy Link";
-  btn.onclick = ()=>{navigator.clipboard.writeText(item.link).then(()=>{alert("QR link copied!");});};
-
-  div.appendChild(img);
-  div.appendChild(btn);
-  qrHistoryDiv.appendChild(div);
+    const div = document.createElement("div");
+    div.classList.add("history-item");
+    const img = document.createElement("img");
+    img.src = item.path;
+    img.title = item.link;
+    img.onclick = ()=>{
+        document.getElementById("qrImage").src = item.path;
+        document.getElementById("qrLink").value = item.link;
+        celebrate();
+    };
+    const btn = document.createElement("button");
+    btn.textContent = "Copy Link";
+    btn.onclick = ()=>{
+        navigator.clipboard.writeText(item.link).then(()=>{alert("QR link copied!");});
+    };
+    div.appendChild(img);
+    div.appendChild(btn);
+    qrHistoryDiv.appendChild(div);
 });
 </script>
 </body>

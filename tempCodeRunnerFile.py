@@ -17,8 +17,11 @@ async def index(request: Request):
 async def generate(request: Request, link: str = Form(...)):
     qr_path = create(link)
     qr_path_for_html = "/" + qr_path.replace("\\", "/")
-    
     return templates.TemplateResponse(
         "result.html",
-        {"request": request, "qr_path": qr_path_for_html}
+        {
+            "request": request,
+            "qr_path": qr_path_for_html,
+            "link": link  # ✅ pass the original URL
+        }
     )
